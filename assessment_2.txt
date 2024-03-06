@@ -1,0 +1,81 @@
+//Problem 1
+import java.util.*;
+
+  class Medal {
+    public static  HashMap<Integer,String> getStudents(HashMap<Integer,Integer> map2){
+        HashMap<Integer,String> map1 = new HashMap<>();
+        for (Map.Entry<Integer,Integer> e : map2.entrySet()){
+            int reg = e.getKey();
+            int marks =e.getValue();
+            String medalType="";
+            if (marks>=90){
+                medalType= "Gold Medal";
+            } else if ( marks> 90 || marks>=80){
+                medalType="Silver Medal";
+            }else if(marks> 80 || marks>=70){
+                medalType= "Bronze Medal";
+            }else{continue;}
+            map1.put(reg,medalType);
+        }
+        return map1;
+        
+         
+    }
+}
+public class Main
+{
+    
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		HashMap<Integer,Integer> map2 = new HashMap<Integer,Integer>();
+		map2.put(1,95);
+		map2.put(2,85);
+		map2.put(3,75);
+		map2.put(4,65);
+		//String s= medal(map,1);;
+		HashMap<Integer,String> medalDet =  new Medal().getStudents(map2);
+	
+		System.out.println( medalDet);
+	}
+}
+
+
+
+
+//Problem 2
+import java.util.*;
+class getArrayList{
+    public static String[] sortTo( String[] s){
+        List<String> wordList = Arrays.asList(s); 
+        Collections.sort(wordList);
+        int len= s.length;
+        int mid=0;
+        if (len%2==0){
+            mid=len/2;
+        }else{
+            mid=(len/2 )+1;
+        }
+        
+         
+        for(int i=0;i<mid;i++){
+            s[i]=wordList.get(i).toUpperCase();
+        }
+    
+        for(int i=mid;i<len;i++){
+            s[i]=wordList.get(i).toLowerCase();
+        }
+        return s;
+    }
+}
+public class Main
+{
+	public static void main(String[] args) {
+		//System.out.println("Hello World");
+		String[] input ={"qualitest","banglore", "hyderabad","chennai","noida"};
+		
+		String[] result = new getArrayList().sortTo(input);
+		System.out.println(Arrays.toString(result));
+	}
+	
+	 
+}
